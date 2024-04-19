@@ -1,0 +1,161 @@
+<!-- report.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+</head>
+<style>
+    /* Base styles */
+    .dropdown-container {
+        margin: 10px;
+    }
+    
+    .horizontal-bar {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    
+    .topic-header {
+        flex-grow: 1;
+        font-size: larger;
+        font-weight: bold;
+        font-family: cursive;
+        text-align: center;
+        color: #414181;
+    }
+    
+    .dropdown-icon {
+        cursor: pointer;
+    }
+    
+    .dropdown-section {
+        display: none;
+        margin: 10px;
+        padding: 10px;
+        background-color: #f0f0f0;
+    }
+    
+    /* Checkbox styles */
+    .checkbox {
+        display: none;
+    }
+    
+    /* Dropdown styles */
+    .checkbox:checked + .dropdown-section {
+        display: block;
+    }
+    .container form {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+      }
+      
+      .container label {
+        display: flex;
+        cursor: pointer;
+        font-weight: 500;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 0.375em;
+      }
+      
+      .container  label input {
+        position: absolute;
+        left: -9999px;
+      }
+      
+      .container label input:checked + span {
+        background-color: #414181;
+        color: white;
+      }
+      
+      .container label input:checked + span:before {
+        box-shadow: inset 0 0 0 0.4375em #00005c;
+      }
+      
+      .container label span {
+        display: flex;
+        align-items: center;
+        padding: 0.375em 0.75em 0.375em 0.375em;
+        border-radius: 99em;
+        transition: 0.25s ease;
+        color: #414181;
+      }
+      
+      .container label span:hover {
+        background-color: #d6d6e5;
+      }
+      
+      .container label span:before {
+        display: flex;
+        flex-shrink: 0;
+        content: "";
+        background-color: #fff;
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 50%;
+        margin-right: 0.375em;
+        transition: 0.25s ease;
+        box-shadow: inset 0 0 0 0.125em #00005c;
+    }
+    
+    /* Table styles */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        margin-top: 20px;
+    }
+    
+    th, td {
+        border: 1px solid #dddddd;
+        padding: 12px;
+        text-align: left;
+    }
+    
+    th {
+        background-color: #f2f2f2;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    
+    tr:hover {
+        background-color: #666464;
+    }
+</style>
+<body>
+    <h1>Report</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Client Category</th>
+                <th>Drilling Type</th>
+                <th>Pump Type</th>
+                <th>Depth/Height</th>
+                <th>Tax Amount</th>
+                <th>Plumbing Cost</th>
+                <th>Total Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for billing in billings %}
+            <tr>
+                <td>{{ billing.client_category }}</td>
+                <td>{{ billing.drilling_type }}</td>
+                <td>{{ billing.pump_type }}</td>
+                <td>{{ billing.depth_height }}</td>
+                <td>{{ billing.tax_amount }}</td>
+                <td>{{ billing.plumbing_cost }}</td>
+                <td>{{ billing.total_amount }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

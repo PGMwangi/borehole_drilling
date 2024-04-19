@@ -1,0 +1,326 @@
+{% if messages %}
+    <div class="alert alert-success" role="alert">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application</title>
+<style>
+/* Base styles */
+.dropdown-container {
+    margin: 10px;
+}
+
+.horizontal-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.topic-header {
+    flex-grow: 1;
+    font-size: larger;
+    font-weight: bold;
+    font-family: cursive;
+    text-align: center;
+    color: #414181;
+}
+
+.dropdown-icon {
+    cursor: pointer;
+}
+
+.dropdown-section {
+    display: none;
+    margin: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+/* Checkbox styles */
+.checkbox {
+    display: none;
+}
+
+/* Dropdown styles */
+.checkbox:checked + .dropdown-section {
+    display: block;
+}
+.container form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  
+  .container label {
+    display: flex;
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0.375em;
+  }
+  
+  .container  label input {
+    position: absolute;
+    left: -9999px;
+  }
+  
+  .container label input:checked + span {
+    background-color: #414181;
+    color: white;
+  }
+  
+  .container label input:checked + span:before {
+    box-shadow: inset 0 0 0 0.4375em #00005c;
+  }
+  
+  .container label span {
+    display: flex;
+    align-items: center;
+    padding: 0.375em 0.75em 0.375em 0.375em;
+    border-radius: 99em;
+    transition: 0.25s ease;
+    color: #414181;
+  }
+  
+  .container label span:hover {
+    background-color: #d6d6e5;
+  }
+  
+  .container label span:before {
+    display: flex;
+    flex-shrink: 0;
+    content: "";
+    background-color: #fff;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    margin-right: 0.375em;
+    transition: 0.25s ease;
+    box-shadow: inset 0 0 0 0.125em #00005c;
+}
+table {
+    width: 100%; /* Set the width of the table */
+    border-collapse: collapse; /* Collapse borders between cells */
+    font-family: Arial, sans-serif; /* Set the font family */
+}
+
+th, td {
+    border: 1px solid #dddddd; /* Add border to cells */
+    padding: 12px; /* Add padding inside cells */
+    text-align: left; /* Align text to the left */
+}
+
+th {
+    background-color: #f2f2f2; /* Add background color to header cells */
+}
+
+/* Alternate row background color */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Hover effect on rows */
+tr:hover {
+    background-color: #666464;
+}
+.buttoncontainer {
+    max-width: 400px;
+    margin: auto;
+    justify-content: center; 
+}
+.button {
+
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green background color */
+    color: #fff;
+    border: 2px solid #F44336; /* Red border */
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative; /* Position relative for pseudo-element */
+    overflow: hidden; /* Hide overflow content */
+    text-align: center; /* Center text horizontally */
+}
+
+.button span {
+    position: relative; /* Position relative for button text */
+    z-index: 1; /* Ensure button text is on top of pseudo-element */
+}
+
+</style>
+</head>
+<body>
+
+<!-- Top Section -->
+<form method="post" action="{% url 'compute_billing' %}">
+  {% csrf_token %}
+  <div class="container">
+      <table>
+          <tr>
+            <th>Client Category</th>
+            <th>Survey Fees</th>
+            <th>Local Authority Fees</th>
+          </tr>
+          <tr>
+            <td>
+              <label>
+                  <input type="radio" name="client_category"  value="Industrial" checked="">
+                  <span>Industrial</span>
+              </label>
+            </td>
+            <td>Ksh. 20,000</td>
+            <td>Ksh. 50,000</td>
+          </tr>
+          <tr>
+            <td>
+              <label>
+                  <input type="radio" name="client_category" value="Commercial">
+                  <span>Commercial</span>
+              </label>
+            </td>
+            <td>Ksh. 15,000</td>
+            <td>Ksh. 30,000</td>
+          </tr>
+          <tr>
+              <td>
+                  <label>
+                      <input type="radio" name="client_category" value="Domestic">
+                      <span>Domestic</span>
+                  </label>
+              </td>
+              <td>Ksh. 7,000</td>
+              <td>Ksh. 10,000</td>
+            </tr>
+      </table><br>
+      <table>
+              <tr>
+                <th>Type of Drilling</th>
+                <th>Down Payment Fees</th>
+              </tr>
+              <tr>
+                <td>
+                  <label>
+              <input type="radio" name="drilling_type"  value="symmetricdrilling" checked="">
+              <span>Symmetric Drilling</span>
+          </label>
+                </td>
+                <td>Ksh. 130,000</td>
+              </tr>
+              <tr>
+                <td>
+                  <label>
+                      <input type="radio" name="drilling_type" value="coredrilling" >
+                      <span>Core Drilling</span>
+                  </label>
+                </td>
+                <td>Ksh. 225,000</td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>
+                          <input type="radio" name="drilling_type" value="geotech" >
+                          <span>Geo-Technical Drilling</span>
+                      </label>
+                  </td>
+                  <td>Ksh. 335,000</td>
+                </tr>
+        </table><br>
+        <table>
+            <tr>
+              <th>Type of Pump</th>
+              <th>Cost</th>
+            </tr>
+            <tr>
+              <td>
+                <label>
+            <input type="radio" name="pump_type"  value="submersible" checked="">
+            <span>Submersible Electric Pump</span>
+        </label>
+              </td>
+              <td>Ksh. 90,000</td>
+            </tr>
+            <tr>
+              <td>
+                <label>
+                    <input type="radio" name="pump_type" value="solarpump" >
+                    <span>Solar Pump</span>
+                </label>
+              </td>
+              <td>Ksh. 65,000</td>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        <input type="radio" name="pump_type" value="handpump" >
+                        <span>Hand Pump</span>
+                    </label>
+                </td>
+                <td>Ksh. 30,000</td>
+              </tr>
+    </table><br>
+    <table>
+        <tr>
+          <th>Depth And Height</th>
+          <th>Cost per Meter</th>
+        </tr>
+        <tr>
+          <td>
+            <label>
+        <input type="radio" name="depth_height"  value="1-100" checked="">
+        <span>1 - 100</span>
+    </label>
+          </td>
+          <td>Ksh. 1,000</td>
+        </tr>
+        <tr>
+          <td>
+            <label>
+                <input type="radio" name="depth_height" value="101-200" >
+                <span>101 - 200</span>
+            </label>
+          </td>
+          <td>Ksh. 1,500</td>
+        </tr>
+        <tr>
+            <td>
+                <label>
+                    <input type="radio" name="depth_height" value="201-300" >
+                    <span>201 - 300</span>
+                </label>
+            </td>
+            <td>Ksh. 2,000</td>
+          </tr>
+          <tr>
+            <td>
+                <label>
+                    <input type="radio" name="depth_height" value="300+" >
+                    <span>over 300</span>
+                </label>
+            </td>
+            <td>Ksh. 2,500</td>
+          </tr>
+</table><br>
+      <!-- Button to prompt Lipa na M-Pesa -->
+      <button type="submit" class="button"><span>Submit Application</span></button>
+  </div>
+</form>
+
+<script>
+function toggleDropdown(id) {
+    var checkbox = document.getElementById(id);
+    checkbox.checked = !checkbox.checked;
+    
+    var otherId = id === 'top' ? 'bottom' : 'top';
+    var otherCheckbox = document.getElementById(otherId);
+    otherCheckbox.checked = false;
+}
+</script>

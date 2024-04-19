@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UZIMA BOREHOLE DRILLING COMPANY</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .logo {
+        font-size: 2 rem;
+        font-family: fantasy;
+        color: #333;
+    }
+
+    .menu-button {
+        display: none;
+        cursor: pointer;
+        padding: 1rem;
+        background-color: #f4f4f4;
+        color: #333;
+        font-size: 1.2rem;
+    }
+
+    .menu-button:hover {
+        color: #555;
+    }
+
+    .header-links {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .header-link {
+        text-decoration: none;
+        color: #333;
+        font-size: 1.2rem;
+    }
+
+    .header-link:hover {
+        color: #555;
+    }
+
+    @media (max-width: 768px) {
+        .menu-button {
+            display: block;
+        }
+
+        .header-links {
+            display: none;
+        }
+    }
+    .button2 {
+        display: inline-block;
+        transition: all 0.2s ease-in;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        color: #090909;
+        padding: 0.7em 1.7em;
+        cursor: pointer;
+        font-size: 18px;
+        border-radius: 0.5em;
+        background: #e8e8e8;
+        border: 1px solid #e8e8e8;
+        box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+      }
+      
+      .button2:active {
+        color: #666;
+        box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+      }
+      
+      .button2:before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) scaleY(1) scaleX(1.25);
+        top: 100%;
+        width: 140%;
+        height: 180%;
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 50%;
+        display: block;
+        transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+        z-index: -1;
+      }
+      
+      .button2:after {
+        content: "";
+        position: absolute;
+        left: 55%;
+        transform: translateX(-50%) scaleY(1) scaleX(1.45);
+        top: 180%;
+        width: 160%;
+        height: 190%;
+        background-color: #009087;
+        border-radius: 50%;
+        display: block;
+        transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+        z-index: -1;
+      }
+      
+      .button2:hover {
+        color: #ffffff;
+        border: 1px solid #009087;
+      }
+      
+      .button2:hover:before {
+        top: -35%;
+        background-color: #009087;
+        transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+      }
+      
+      .button2:hover:after {
+        top: -45%;
+        background-color: #009087;
+        transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+      }
+      #home {
+        position: relative;
+      }
+      
+      .hero-section {
+        position: relative;
+        width: 100%;
+        height: 538px; /* You can adjust the height as needed */
+        background-image: url("https://knadvocates.com/wp-content/uploads/2023/09/shutterstock_650042107-scaled-1.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+      .parent {
+        width: 100%;
+        height: 600px;
+        background-image: url("");
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    
+    .child1 {
+        width: calc(100% - 50%);
+        height: 500px;
+        background-color: blue;
+        border-radius: 10px;
+        margin: 10px;
+        color: aliceblue;
+        font-size: 500%;
+        text-align: center;
+    }
+    
+    .child2 {
+        width: calc(100% - 50%);
+        height: 500px;
+        background-color: green;
+        border-radius: 10px;
+    }
+
+</style>
+<body>
+    <header>
+        <h1 class="logo">UZIMA BOREHOLE DRILLING COMPANY</h1>
+        <button class="menu-button">Menu</button>
+        <nav class="header-links">
+            <button class="button2" onclick="scrollToSection('home')">Home</button>
+            <button class="button2" onclick="scrollToSection('about')">About Us</button>
+            <button class="button2" onclick="scrollToSection('services')">Practice Areas</button>
+            <button class="button2" onclick="scrollToSection('contact')">Contact Us</button>
+        </nav>
+    </header>
+    <div class="parent">
+        <div class="child1">
+            <h1 class="welcome-text">Welcome</h1>
+        </div>
+        <div class="child2"></div>
+    </div>
+</body>
+</html>
+
